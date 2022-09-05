@@ -24,7 +24,7 @@ def disconnect():
 
 @socket.on('post_message')
 def post_message(new_message):
-    with open(r'C:\Users\user\Desktop\Chat\server\data.json', 'r+') as data_file:
+    with open(r'data.json', 'r+') as data_file:
         data = json.load(data_file)
 
         print(new_message)
@@ -42,7 +42,7 @@ def post_message(new_message):
 
 @socket.on('get_messages')
 def get_messages():
-    data_file = open(r'C:\Users\user\Desktop\Chat\server\data.json')
+    data_file = open(r'data.json')
     data = json.load(data_file)
     return data
 
