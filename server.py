@@ -49,7 +49,7 @@ def get_messages():
 
 @app.route('/', defaults={'path':''})
 def index(path):
-    return send_from_directory(app.static_folder, 'index.htm')
+    return send_from_directory(app.static_folder, 'index.html')
     # return 'hello this is chat app server'
 
 
