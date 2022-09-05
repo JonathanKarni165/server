@@ -47,8 +47,8 @@ def get_messages():
     return data
 
 
-@app.route('/')
-def index():
+@app.route('/', defaults={'path':''})
+def index(path):
     return send_from_directory(app.static_folder, 'index.htm')
     # return 'hello this is chat app server'
 
@@ -74,5 +74,5 @@ def index():
 #             send('REFRESH', broadcast=True)
 #             return request.data
 
-if __name__ == '__main__':
-    socket.run(app, host='0.0.0.0', port=5000)
+# if __name__ == '__main__':
+#     socket.run(app, host='0.0.0.0', port=5000)
