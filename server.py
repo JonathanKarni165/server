@@ -8,7 +8,7 @@ import json
 app = Flask(__name__, static_folder='build', static_url_path='/')
 app.debug = True
 app.config['SECRET KEY'] = 'secret!'
-CORS(app)
+# CORS(app)
 socket = SocketIO(app, cors_allowed_origins='*')
 
 
