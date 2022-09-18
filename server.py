@@ -1,5 +1,4 @@
 from flask import request
-from waitress import serve
 from flask import Flask, send_from_directory
 from flask_socketio import SocketIO, send
 from flask_cors import CORS
@@ -8,7 +7,7 @@ import json
 app = Flask(__name__, static_folder='build', static_url_path='/')
 app.debug = True
 app.config['SECRET KEY'] = 'secret!'
-# CORS(app)
+CORS(app)
 socket = SocketIO(app, cors_allowed_origins='*')
 
 
@@ -35,7 +34,7 @@ def post_message(new_message):
         json.dump(data, data_file, indent=4)
 
         # rest of the clients should request the messages again
-        socket.emit('refresh', broadcast=True)
+        socket.emit('refresh')
 
         return request.data
 
@@ -74,5 +73,5 @@ def index(path):
 #             send('REFRESH', broadcast=True)
 #             return request.data
 
-# if __name__ == '__main__':
-#     socket.run(app, host='0.0.0.0', port=5000)
+if __name__ == '__main__':
+    socket.run(app, host='0.0.0.0', port='5000')
