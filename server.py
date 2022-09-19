@@ -1,5 +1,4 @@
 from flask import request
-from waitress import serve
 from flask import Flask, send_from_directory
 from flask_socketio import SocketIO, send
 from flask_cors import CORS
@@ -8,7 +7,7 @@ import json
 app = Flask(__name__, static_folder='build', static_url_path='/')
 app.debug = True
 app.config['SECRET KEY'] = 'secret!'
-# CORS(app)
+CORS(app)
 socket = SocketIO(app, cors_allowed_origins='*')
 
 
