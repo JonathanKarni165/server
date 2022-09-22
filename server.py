@@ -46,7 +46,12 @@ def get_messages():
     return data
 
 
-@app.route('/', defaults={'path':''})
+@socket.on('add_user')
+def add_user(new_user):
+    return True
+
+
+@app.route('/', defaults={'path': ''})
 def index(path):
     return send_from_directory(app.static_folder, 'index.html')
     # return 'hello this is chat app server'
@@ -72,6 +77,5 @@ def index(path):
 #             json.dump(data, data_file, indent=4)
 #             send('REFRESH', broadcast=True)
 #             return request.data
-
 if __name__ == '__main__':
     socket.run(app, host='0.0.0.0', port=5000)
